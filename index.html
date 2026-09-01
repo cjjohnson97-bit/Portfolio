@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Christopher Johnson | Mechanical Design Engineer</title>
+  <meta name="description" content="Portfolio of Christopher Johnson, Mechanical Design Engineer specializing in mass manufacturing, precision mechanisms, robotics, mechatronics, and full-stack hardware/firmware.">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-grid">
+
+  <!-- =========================================================================
+       SITE HEADER & STICKY ANCHOR NAVIGATION
+       ========================================================================= -->
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand-logo">
+        <span>Christopher Johnson</span>
+        <span class="brand-badge">Mech Eng</span>
+      </a>
+
+      <!-- Horizontal Anchor Menu -->
+      <nav>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#mass-manufacturing" class="nav-link">Mass Production</a></li>
+          <li><a href="#mechatronics" class="nav-link">Mechatronics</a></li>
+          <li><a href="#leadership" class="nav-link">Leadership</a></li>
+          <li><a href="#toolkit-homelab" class="nav-link">Toolkit & Homelab</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="assets/docs/ChrisJohnsonResume.docx.pdf" class="btn btn-secondary btn-sm" download target="_blank">
+          <span>Resume</span> 📄
+        </a>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- =========================================================================
+         HERO SECTION (Full Viewport Height)
+         ========================================================================= -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-content">
+          <!-- EDIT: Name & Title -->
+          <h1 class="hero-title">Christopher Johnson</h1>
+          <h2 class="hero-role">Mechanical Design Engineer</h2>
+
+          <!-- EDIT: 1-Sentence Hook -->
+          <p class="hero-hook">
+            Designing precision mechanisms, robotics, and mass-produced hardware from first principles to
+            high-volume production.
+          </p>
+
+          <div class="hero-cta">
+            <a href="#mass-manufacturing" class="btn btn-primary">
+              <span>Explore Projects</span> ↓
+            </a>
+            <a href="assets/docs/ChrisJohnsonResume.docx.pdf" class="btn btn-secondary" download target="_blank">
+              <span>Download PDF Resume</span> 📄
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         CATEGORY 1: MASS MANUFACTURING
+         Projects: Fuse Blast, uPulse Turnaround, Unreleased R&D
+         ========================================================================= -->
+    <section id="mass-manufacturing" class="project-section-wrapper">
+      <div class="container">
+        <div class="category-header-block">
+          <h2 class="category-heading">
+            <span class="category-number-prefix">//</span>
+            <span>Getting products to mass production</span>
+          </h2>
+          <div class="category-divider-line"></div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 48px;">
+
+          <!-- 1. Formlabs: Fuse Blast -->
+          <article class="project-card">
+            <div class="project-card-info">
+              <div>
+                <div class="project-meta-top">
+                  <span class="project-number"></span>
+                  <span class="project-tag">Formlabs</span>
+                </div>
+                <h3 class="project-title">Fuse Blast</h3>
+                <h4 class="project-tagline">Subsytem ownership from concept to Mass production</h4>
+                <!-- EDIT: Fuse Blast Summary -->
+                <p class="project-desc">
+                  From early prototypes of the hopper subsytem to the now released product. This was a highly cost
+                  contientious machine requiring sheet metal manufacturing, die cast & extruded parts, all while
+                  providing the best media lifetime of any SLS blasting machine on the market due to the innovative
+                  media separation technique I pioneered.
+                </p>
+                <div class="project-skills">
+                  <span class="skill-pill">Die-Casting DFM</span>
+                  <span class="skill-pill">Extrusion design</span>
+                  <span class="skill-pill">Bulk Solids</span>
+                  <span class="skill-pill">Global Sourcing</span>
+                  <span class="skill-pill">Sheet Metal</span>
+                  <span class="skill-pill">Welding</span>
+                </div>
+              </div>
+              <div>
+                <a href="fuse-blast.html" class="btn btn-primary btn-sm">
+                  <span>View Project Deep Dive</span> →
+                </a>
+              </div>
+            </div>
+            <a href="fuse-blast.html" class="project-card-media" aria-label="View Formlabs Fuse Blast details">
+              <img src="assets/img/fuse-blast-hero.webp" alt="Formlabs Fuse Blast Automated Post-Processing System"
+                loading="lazy">
+              <span class="media-badge">Fuse-Blast</span>
+            </a>
+          </article>
+
+          <!-- 2. uPulse Turnaround -->
+          <article class="project-card">
+            <div class="project-card-info">
+              <div>
+                <div class="project-meta-top">
+                  <span class="project-number"></span>
+                  <span class="project-tag">Formulatrix</span>
+                </div>
+                <h3 class="project-title">uPulse</h3>
+                <h4 class="project-tagline">Liquid level sense redevelopment & patented pressure gradient technology
+                </h4>
+                <!-- EDIT: uPulse Summary -->
+                <p class="project-desc">
+                  Inherited a high-risk, unverified fluid sensing architecture. Completely re-engineered the liquid
+                  level sensing subsystem and invented a novel pressure gradient methodology that secured European
+                  Patent EP4739424A1.
+                </p>
+                <div class="project-skills">
+                  <span class="skill-pill">Patent</span>
+                  <span class="skill-pill">Fluid Dynamics</span>
+                  <span class="skill-pill">Pressure Gradient Tech</span>
+                  <span class="skill-pill">Rapid Turnaround</span>
+                </div>
+              </div>
+              <div>
+                <a href="upulse.html" class="btn btn-primary btn-sm">
+                  <span>View Project Deep Dive & Patent</span> →
+                </a>
+              </div>
+            </div>
+            <a href="upulse.html" class="project-card-media" aria-label="View uPulse Turnaround and Patent details">
+              <img src="assets/img/upulse-hero.webp" alt="uPulse Fluid Sensing and Turnaround Hardware" loading="lazy">
+              <span class="media-badge"></span>
+            </a>
+          </article>
+
+          <!-- 3. Unreleased Product R&D -->
+          <article class="project-card">
+            <div class="project-card-info">
+              <div>
+                <div class="project-meta-top">
+                  <span class="project-number">03</span>
+                  <span class="project-tag">Confidential R&D</span>
+                </div>
+                <h3 class="project-title">Unreleased Product</h3>
+                <h4 class="project-tagline">Next-generation precision optics & airflow management</h4>
+                <!-- EDIT: Unreleased Product Summary -->
+                <p class="project-desc">
+                  An NDA-compliant overview demonstrating trust with future core hardware architectures. Spearheaded
+                  precision optical pathway mounting, aerodynamic particle air handling, and strict thermal containment.
+                </p>
+                <div class="project-skills">
+                  <span class="skill-pill">Precision Optics</span>
+                  <span class="skill-pill">Air Handling</span>
+                  <span class="skill-pill">Thermal Architecture</span>
+                  <span class="skill-pill">Confidential R&D</span>
+                </div>
+              </div>
+              <div>
+                <a href="unreleased-rd.html" class="btn btn-primary btn-sm">
+                  <span>View R&D Overview</span> →
+                </a>
+              </div>
+            </div>
+            <a href="unreleased-rd.html" class="project-card-media" aria-label="View Unreleased Product R&D details">
+              <img src="assets/img/formlabs-butterfly.webp" alt="Confidential Formlabs Optics and Air Handling R&D"
+                loading="lazy">
+              <span class="media-badge">NDA Compliant</span>
+            </a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         CATEGORY 2: MECHATRONICS & EMBEDDED
+         Projects: MTG Life Counter, CAN Bus Transceiver
+         ========================================================================= -->
+    <section id="mechatronics" class="project-section-wrapper">
+      <div class="container">
+        <div class="category-header-block">
+          <h2 class="category-heading">
+            <span class="category-number-prefix">//</span>
+            <span>Gears & Embedded Systems</span>
+          </h2>
+          <div class="category-divider-line"></div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 48px;">
+
+          <!-- 4. MTG Life Counter -->
+          <article class="project-card">
+            <div class="project-card-info">
+              <div>
+                <div class="project-meta-top">
+                  <span class="project-number"></span>
+                  <span class="project-tag">Gearboxes // Kinematics</span>
+                </div>
+                <h3 class="project-title">MTG Life Counter</h3>
+                <h4 class="project-tagline">Custom Gearbox solution to a common Magic problem</h4>
+                <!-- EDIT: MTG Life Counter Summary -->
+                <p class="project-desc">
+                  Hands-on mechanism design featuring a custom internal gearbox desgined from scratch with over 60
+                  parts. Lessons learned in design and ____
+                </p>
+                <div class="project-skills">
+                  <span class="skill-pill">Planetary Gearbox</span>
+                  <span class="skill-pill">3D printing</span>
+                  <span class="skill-pill">Rapid Prototyping</span>
+                </div>
+              </div>
+              <div>
+                <a href="mtg-counter.html" class="btn btn-primary btn-sm">
+                  <span>Explore 3D CAD & Mechanism</span> →
+                </a>
+              </div>
+            </div>
+            <a href="mtg-counter.html" class="project-card-media"
+              aria-label="View MTG Life Counter mechanism and 3D CAD">
+              <img src="assets/img/mtg-counter-loop.webp" alt="MTG Life Counter Smooth Mechanism Action" loading="lazy">
+              <span class="media-badge">Interactive 3D Available</span>
+            </a>
+          </article>
+
+          <!-- 5. CAN Bus Transceiver -->
+          <article class="project-card">
+            <div class="project-card-info">
+              <div>
+                <div class="project-meta-top">
+                  <span class="project-number">05</span>
+                  <span class="project-tag">Electronics & Firmware</span>
+                </div>
+                <h3 class="project-title">CAN Bus Transceiver</h3>
+                <h4 class="project-tagline">Custom PCB circuit, ESP32 integration & AI-accelerated firmware</h4>
+                <!-- EDIT: CAN Transceiver Summary -->
+                <p class="project-desc">
+                  End-to-end electrical and firmware development. Designed a robust differential transceiver circuit
+                  with ESD protection, integrated high-speed ESP32 communications, and leveraged AI workflows for
+                  firmware architecture.
+                </p>
+                <div class="project-skills">
+                  <span class="skill-pill">Schematic & PCB Design</span>
+                  <span class="skill-pill">ESP32 & C/C++</span>
+                  <span class="skill-pill">CAN Bus Protocol</span>
+                  <span class="skill-pill">AI Firmware Workflow</span>
+                </div>
+              </div>
+              <div>
+                <a href="can-transceiver.html" class="btn btn-primary btn-sm">
+                  <span>View Schematics & Firmware</span> →
+                </a>
+              </div>
+            </div>
+            <a href="can-transceiver.html" class="project-card-media"
+              aria-label="View CAN Bus Transceiver schematics and firmware details">
+              <img src="assets/img/can-transceiver-hero.webp" alt="Custom CAN Bus Transceiver Hardware and Circuitry"
+                loading="lazy">
+              <span class="media-badge">Hardware & Code</span>
+            </a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         CATEGORY 3: LEADERSHIP & MENTORSHIP
+         Projects: FIRST Robotics Team 4909
+         ========================================================================= -->
+    <section id="leadership" class="project-section-wrapper">
+      <div class="container">
+        <div class="category-header-block">
+          <h2 class="category-heading">
+            <span class="category-number-prefix">03 //</span>
+            <span>Engineering Leadership & Mentorship</span>
+          </h2>
+          <div class="category-divider-line"></div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 48px;">
+
+          <!-- 6. FIRST Robotics (Team 4909) -->
+          <article class="project-card">
+            <div class="project-card-info">
+              <div>
+                <div class="project-meta-top">
+                  <span class="project-number">06</span>
+                  <span class="project-tag">Mentorship // World Championships</span>
+                </div>
+                <h3 class="project-title">FIRST Robotics (Team 4909)</h3>
+                <h4 class="project-tagline">Mechanical mentorship, strategic fabrication & championship leadership</h4>
+                <!-- EDIT: FIRST Robotics Summary -->
+                <p class="project-desc">
+                  Long-term mentorship guiding high school engineers through rigorous 6-week build seasons, CAD best
+                  practices, CNC fabrication, and high-energy World Championship playoff runs from 2018 through 2026.
+                </p>
+                <div class="project-skills">
+                  <span class="skill-pill">Mechanical Coaching</span>
+                  <span class="skill-pill">FRC World Championship</span>
+                  <span class="skill-pill">Rapid Prototyping</span>
+                  <span class="skill-pill">Design Reviews</span>
+                </div>
+              </div>
+              <div>
+                <a href="robotics.html" class="btn btn-primary btn-sm">
+                  <span>View Championship Gallery & Story</span> →
+                </a>
+              </div>
+            </div>
+            <a href="robotics.html" class="project-card-media"
+              aria-label="View FIRST Robotics Team 4909 robot showcase">
+              <img src="assets/img/robot-2025.webp" alt="FIRST Robotics Team 4909 Championship Competition Robot"
+                loading="lazy">
+              <span class="media-badge">2018–2026 Gallery</span>
+            </a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         CATEGORY 4: TOOLKIT, HOMELAB & RESUME
+         Projects: Systems Literacy, Homelab, Contact, Resume
+         ========================================================================= -->
+    <section id="toolkit-homelab" class="project-section-wrapper">
+      <div class="container">
+        <div class="category-header-block">
+          <h2 class="category-heading">
+            <span class="category-number-prefix">04 //</span>
+            <span>Systems Literacy & Personal Projects</span>
+          </h2>
+          <div class="category-divider-line"></div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 48px;">
+
+          <!-- 7. The Toolkit & Homelab -->
+          <article class="project-card">
+            <div class="project-card-info">
+              <div>
+                <div class="project-meta-top">
+                  <span class="project-number">07</span>
+                  <span class="project-tag">Homelab // Full-Stack Systems</span>
+                </div>
+                <h3 class="project-title">The Toolkit & Homelab</h3>
+                <h4 class="project-tagline">Raspberry Pi infrastructure, custom networking & DIY mechatronics</h4>
+                <!-- EDIT: Toolkit Summary -->
+                <p class="project-desc">
+                  Proof of full-stack technical literacy. Explores my homelab cluster, custom network routing, Plex
+                  server, and personal builds including a ground-up DIY electric Onewheel with custom motor controllers.
+                </p>
+                <div class="project-skills">
+                  <span class="skill-pill">Raspberry Pi Cluster</span>
+                  <span class="skill-pill">Networking & VLANs</span>
+                  <span class="skill-pill">DIY Onewheel EV</span>
+                  <span class="skill-pill">Full-Stack Literacy</span>
+                </div>
+              </div>
+              <div>
+                <a href="toolkit.html" class="btn btn-primary btn-sm">
+                  <span>View Toolkit, Homelab & Resume</span> →
+                </a>
+              </div>
+            </div>
+            <a href="toolkit.html" class="project-card-media" aria-label="View Toolkit and Homelab project">
+              <img src="assets/img/onewheel.webp" alt="DIY Custom Built Electric Onewheel" loading="lazy">
+              <span class="media-badge">Hands-On Systems</span>
+            </a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================================
+       SITE FOOTER & CONTACT
+       ========================================================================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h4>Christopher Johnson</h4>
+          <p>Mechanical Design Engineer focused on mass manufacturing, kinematics, mechatronics, and robotics.</p>
+          <div style="margin-top: 16px;">
+            <a href="assets/docs/ChrisJohnsonResume.docx.pdf" class="btn btn-primary btn-sm" download target="_blank">
+              <span>Download PDF Resume</span> 📄
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h5>Navigation</h5>
+          <ul class="footer-links">
+            <li><a href="#mass-manufacturing">Mass Manufacturing</a></li>
+            <li><a href="#mechatronics">Mechatronics</a></li>
+            <li><a href="#leadership">Leadership & Mentorship</a></li>
+            <li><a href="#toolkit-homelab">Toolkit & Homelab</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Projects</h5>
+          <ul class="footer-links">
+            <li><a href="fuse-blast.html">Fuse Blast</a></li>
+            <li><a href="upulse.html">uPulse Turnaround</a></li>
+            <li><a href="unreleased-rd.html">Unreleased R&D</a></li>
+            <li><a href="mtg-counter.html">MTG Life Counter</a></li>
+            <li><a href="can-transceiver.html">CAN Transceiver</a></li>
+            <li><a href="robotics.html">FIRST Robotics 4909</a></li>
+            <li><a href="toolkit.html">Toolkit & Homelab</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 Christopher Johnson. All rights reserved.</div>
+        <div>Built for GitHub Pages &bull; Optimized WebP Media</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>
