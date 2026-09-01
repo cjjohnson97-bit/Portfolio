@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MTG Life Counter — Mechatronics & 3D CAD | Christopher Johnson Portfolio</title>
+  <meta name="description" content="Hands-on mechatronics case study for a miniature planetary gearbox MTG Life Counter featuring interactive 3D CAD viewer, exploded view, and kinematics analysis.">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Three.js & GLTF Loader for Interactive 3D CAD Inspection -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+</head>
+<body class="bg-grid">
+
+  <!-- SITE HEADER -->
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand-logo">
+        <span>Christopher Johnson</span>
+        <span class="brand-badge">Mech Eng</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="index.html#mechatronics" class="nav-link active">← Back to Overview</a></li>
+          <li><a href="unreleased-rd.html" class="nav-link">← Unreleased R&D</a></li>
+          <li><a href="can-transceiver.html" class="nav-link">CAN Transceiver →</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="assets/docs/ChrisJohnsonResume.docx.pdf" class="btn btn-secondary btn-sm" download target="_blank">
+          <span>Resume</span> 📄
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- CASE STUDY HERO -->
+    <section class="case-study-hero">
+      <div class="container">
+        <a href="index.html#mechatronics" class="breadcrumb">← Back to Mechatronics</a>
+        <!-- EDIT: Project Title & Subtitle -->
+        <h1 class="case-study-title">MTG Life Counter: Precision Mechatronics</h1>
+        <p class="case-study-subtitle">
+          A hands-on exploration in precision mechanism design — engineering a compact dual-dial mechanical life counter driven by an internal planetary gearbox, custom involute tooth profiles, and tactile spring detents.
+        </p>
+
+        <!-- Technical Metadata Grid -->
+        <div class="specs-grid">
+          <div>
+            <div class="spec-item-label">Mechanism Type</div>
+            <div class="spec-item-value">Planetary & Compound Gearbox</div>
+          </div>
+          <div>
+            <div class="spec-item-label">Gear Module</div>
+            <div class="spec-item-value">0.5 Mod / Custom Involute</div>
+          </div>
+          <div>
+            <div class="spec-item-label">Interaction</div>
+            <div class="spec-item-value">Interactive 3D CAD + Part Toggles</div>
+          </div>
+          <div>
+            <div class="spec-item-label">Prototyping</div>
+            <div class="spec-item-value">High-Resolution SLA & FDM</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CASE STUDY CONTENT -->
+    <div class="container">
+      <div class="case-content-grid">
+
+        <!-- 1. Mechanism Action Hero Loop & Exploded View -->
+        <div class="media-gallery-grid">
+          <div class="gallery-item lightbox-trigger" data-caption="MTG Life Counter - 3-Second Mechanism Action Loop">
+            <img src="assets/img/mtg-counter-loop.webp" alt="MTG Life Counter Mechanism Motion" style="max-height: 380px; object-fit: cover;">
+            <div class="gallery-caption">Fig 4.1: High-precision dial indexing and smooth ratcheting mechanism.</div>
+          </div>
+          <div class="gallery-item lightbox-trigger" data-caption="MTG Life Counter - Exploded CAD Assembly View">
+            <img src="assets/img/mtg-explode.webp" alt="MTG Life Counter Exploded CAD Assembly View" style="max-height: 380px; object-fit: contain; background: #060a12;">
+            <div class="gallery-caption">Fig 4.2: Exploded CAD view detailing housing, idlers, dials, and drive axles.</div>
+          </div>
+        </div>
+
+        <!-- 2. Interactive 3D CAD Model Viewer with Part Toggles -->
+        <article class="case-section" style="padding: 24px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
+            <h2 class="case-section-title" style="margin-bottom: 0;">Interactive 3D CAD Inspection</h2>
+            <div style="display: flex; gap: 8px;">
+              <button class="btn btn-secondary btn-sm" id="cad-reset-btn" onclick="document.getElementById('cad-viewer')._resetView()">Reset View</button>
+              <button class="btn btn-secondary btn-sm" id="cad-rotate-btn" onclick="const r = document.getElementById('cad-viewer')._toggleAutoRotate(); this.textContent = r ? 'Stop Rotate' : 'Auto Rotate';">Auto Rotate</button>
+            </div>
+          </div>
+          <p class="case-paragraph" style="font-size: 0.95rem; margin-bottom: 12px;">
+            Rotate (Left-Click + Drag), Pan (Right-Click + Drag), and Zoom (Scroll) through the full CAD assembly. Click the toggle badges below to <strong>hide individual parts</strong> (such as the outer casing) and reveal the internal planetary gear mechanisms!
+          </p>
+
+          <!-- 3D Canvas Container -->
+          <div class="cad-viewer-wrapper">
+            <div class="cad-hint">🖱 Drag to rotate &bull; Scroll to zoom &bull; Click chips to toggle parts</div>
+            <div id="cad-loading" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: var(--font-mono); font-size: 0.9rem; color: var(--accent-cyan); z-index: 5;">
+              Loading 3D CAD Model...
+            </div>
+            <div id="cad-viewer" class="cad-canvas-container"></div>
+            <div class="cad-controls-overlay">
+              <div class="cad-parts-toggles" id="cad-parts-list">
+                <!-- Part toggles injected dynamically by main.js -->
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 3. The Kinematic Challenge & Gearbox Solution -->
+        <article class="case-section">
+          <!-- EDIT: Kinematic Challenge Section -->
+          <h2 class="case-section-title">The Kinematic Challenge & Gearbox Architecture</h2>
+          <p class="case-paragraph">
+            The mechanical goal was to engineer a pocket-sized dual-player life counter (tracking 00 to 99 for both players) with crisp mechanical detents, zero gear slip, and a satisfying tactile click.
+          </p>
+          <p class="case-paragraph">
+            Standard spur gear arrangements in small form factors frequently suffer from tooth binding or excessive backlash. To overcome this, I developed a compound planetary reduction train:
+          </p>
+          <ul class="case-list">
+            <li class="case-list-item">
+              <span class="case-list-bullet">01</span>
+              <div>
+                <strong>Custom Involute Tooth Geometry:</strong> Modified the standard 20° pressure angle to 25° on the 0.5 module pinions, increasing tooth root strength and preventing tip interference under micro-scale 3D printing tolerances.
+              </div>
+            </li>
+            <li class="case-list-item">
+              <span class="case-list-bullet">02</span>
+              <div>
+                <strong>Backlash Mitigation:</strong> Engineered integrated spring-loaded compliance directly into the idler carrier to maintain continuous tooth pitch contact without introducing binding friction.
+              </div>
+            </li>
+            <li class="case-list-item">
+              <span class="case-list-bullet">03</span>
+              <div>
+                <strong>Positive-Click Detent Wheel:</strong> Designed an internal scalloped cam ring with dual cantilever leaf springs, ensuring positive dial locking at every discrete integer step.
+              </div>
+            </li>
+          </ul>
+        </article>
+
+        <!-- 4. Manufacturing, Tolerances & Materials -->
+        <article class="case-section">
+          <!-- EDIT: Tolerances & Materials Section -->
+          <h2 class="case-section-title">Manufacturing, Tolerances & Assembly</h2>
+          <p class="case-paragraph">
+            Prototyped and validated across both stereolithography (SLA Tough 2000 / Rigid 4000) and precision FDM setups. Applied GD&T running fit tolerances (&plusmn;0.05mm) across axle shafts and snap-fit retention caps, eliminating the need for complex internal fasteners.
+          </p>
+          <div class="gallery-item lightbox-trigger" data-caption="Fabricated MTG Life Counters - Multiple Colorway Assemblies">
+            <img src="assets/img/mtg-lifecounters.webp" alt="Fabricated MTG Life Counters" style="max-height: 400px; object-fit: cover;">
+            <div class="gallery-caption">Fig 4.3: Physical assembled and tested prototypes in multiple resin and filament colorways.</div>
+          </div>
+        </article>
+
+        <!-- Bottom Navigation Switcher -->
+        <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 20px;">
+          <a href="unreleased-rd.html" class="btn btn-secondary">← Previous: Unreleased R&D</a>
+          <a href="can-transceiver.html" class="btn btn-primary">Next: CAN Transceiver →</a>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- LIGHTBOX MODAL -->
+  <div id="lightbox-modal" class="lightbox-modal" role="dialog" aria-modal="true">
+    <div class="lightbox-content">
+      <button id="lightbox-close" class="lightbox-close" aria-label="Close dialog">&times;</button>
+      <img id="lightbox-img" class="lightbox-img" src="" alt="Enlarged gallery view">
+      <div id="lightbox-caption" class="lightbox-caption"></div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-bottom">
+      <div>&copy; 2026 Christopher Johnson</div>
+      <a href="index.html">Portfolio Home</a>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    // Initialize 3D CAD Viewer on page load
+    window.addEventListener('load', () => {
+      window.initCadViewer('cad-viewer', 'assets/models/mtg-counter.glb');
+    });
+  </script>
+</body>
+</html>
