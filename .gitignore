@@ -1,0 +1,16 @@
+﻿# Raw working assets / media dumps
+Resources/
+*.step
+*.stp
+
+# Python
+__pycache__/
+*.py[cod]
+*.class
+.venv/
+venv/
+env/
+
+# OS metadata
+.DS_Store
+Thumbs.db

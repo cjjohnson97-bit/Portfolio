@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MTG Life Counter — Mechatronics & 3D CAD | Christopher Johnson Portfolio</title>
-  <meta name="description" content="Hands-on mechatronics case study for a miniature planetary gearbox MTG Life Counter featuring interactive 3D CAD viewer, exploded view, and kinematics analysis.">
+  <title>MTG Life Counter | Christopher Johnson Portfolio</title>
+  <meta name="description" content="A two-sided Magic: The Gathering life counter: herringbone gear trains drive three internal ring gears so both players read the same number. Includes an interactive 3D CAD viewer.">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,21 +22,18 @@
     <div class="container nav-inner">
       <a href="index.html" class="brand-logo">
         <span>Christopher Johnson</span>
-        <span class="brand-badge">Mech Eng</span>
       </a>
 
       <nav>
         <ul class="nav-links" id="nav-links">
-          <li><a href="index.html#mechatronics" class="nav-link active">← Back to Overview</a></li>
-          <li><a href="unreleased-rd.html" class="nav-link">← Unreleased R&D</a></li>
-          <li><a href="can-transceiver.html" class="nav-link">CAN Transceiver →</a></li>
+          <li><a href="index.html#robotics-builds" class="nav-link active">← Back to Robotics &amp; Builds</a></li>
+          <li><a href="unreleased-rd.html" class="nav-link">← Next-Generation Printer</a></li>
+          <li><a href="onewheel.html" class="nav-link">DIY Onewheel →</a></li>
         </ul>
       </nav>
 
       <div class="nav-actions">
-        <a href="assets/docs/ChrisJohnsonResume.docx.pdf" class="btn btn-secondary btn-sm" download target="_blank">
-          <span>Resume</span> 📄
-        </a>
+        <a href="index.html#contact" class="btn btn-secondary btn-sm">Contact</a>
       </div>
     </div>
   </header>
@@ -45,30 +42,30 @@
     <!-- CASE STUDY HERO -->
     <section class="case-study-hero">
       <div class="container">
-        <a href="index.html#mechatronics" class="breadcrumb">← Back to Mechatronics</a>
+        <a href="index.html#robotics-builds" class="breadcrumb">← Back to Robotics &amp; Builds</a>
         <!-- EDIT: Project Title & Subtitle -->
-        <h1 class="case-study-title">MTG Life Counter: Precision Mechatronics</h1>
+        <h1 class="case-study-title">MTG Life Counter: A Two-Sided Gear Train</h1>
         <p class="case-study-subtitle">
-          A hands-on exploration in precision mechanism design — engineering a compact dual-dial mechanical life counter driven by an internal planetary gearbox, custom involute tooth profiles, and tactile spring detents.
+          A Magic: The Gathering life counter set with two knobs. You and your opponent each read the same number, right side up, from opposite sides of the table.
         </p>
 
         <!-- Technical Metadata Grid -->
         <div class="specs-grid">
           <div>
-            <div class="spec-item-label">Mechanism Type</div>
-            <div class="spec-item-value">Planetary & Compound Gearbox</div>
+            <div class="spec-item-label">Type</div>
+            <div class="spec-item-value">Two-sided mechanical counter</div>
           </div>
           <div>
-            <div class="spec-item-label">Gear Module</div>
-            <div class="spec-item-value">0.5 Mod / Custom Involute</div>
+            <div class="spec-item-label">Drive</div>
+            <div class="spec-item-value">Herringbone gears + internal ring gears</div>
           </div>
           <div>
-            <div class="spec-item-label">Interaction</div>
-            <div class="spec-item-value">Interactive 3D CAD + Part Toggles</div>
+            <div class="spec-item-label">Parts</div>
+            <div class="spec-item-value">About 20, plus inlaid digits</div>
           </div>
           <div>
-            <div class="spec-item-label">Prototyping</div>
-            <div class="spec-item-value">High-Resolution SLA & FDM</div>
+            <div class="spec-item-label">Made With</div>
+            <div class="spec-item-value">SLS 3D printing</div>
           </div>
         </div>
       </div>
@@ -78,29 +75,143 @@
     <div class="container">
       <div class="case-content-grid">
 
-        <!-- 1. Mechanism Action Hero Loop & Exploded View -->
-        <div class="media-gallery-grid">
-          <div class="gallery-item lightbox-trigger" data-caption="MTG Life Counter - 3-Second Mechanism Action Loop">
-            <img src="assets/img/mtg-counter-loop.webp" alt="MTG Life Counter Mechanism Motion" style="max-height: 380px; object-fit: cover;">
-            <div class="gallery-caption">Fig 4.1: High-precision dial indexing and smooth ratcheting mechanism.</div>
+        <!-- Hero Media: mechanism loop + finished counter -->
+        <div class="hero-media-grid">
+          <div class="gallery-item lightbox-trigger" data-caption="MTG Life Counter mechanism in motion">
+            <img src="assets/img/mtg-counter-loop.webp" alt="MTG Life Counter mechanism in motion" class="hero-media-loop">
+            <div class="gallery-caption">Fig 4.1: The mechanism in motion.</div>
           </div>
-          <div class="gallery-item lightbox-trigger" data-caption="MTG Life Counter - Exploded CAD Assembly View">
-            <img src="assets/img/mtg-explode.webp" alt="MTG Life Counter Exploded CAD Assembly View" style="max-height: 380px; object-fit: contain; background: #060a12;">
-            <div class="gallery-caption">Fig 4.2: Exploded CAD view detailing housing, idlers, dials, and drive axles.</div>
+          <div class="gallery-item lightbox-trigger" data-caption="A finished MTG Life Counter">
+            <img src="assets/img/mtg-lifecounter-hero.webp" alt="A finished MTG Life Counter showing a life total of 40" class="hero-media-photo">
+            <div class="gallery-caption">Fig 4.2: A finished counter, ready for a game at 40 life.</div>
+          </div>
+          <div class="gallery-item lightbox-trigger banner-figure" data-caption="MTG Life Counter exploded CAD view">
+            <img src="assets/img/mtg-explode.webp" alt="MTG Life Counter exploded CAD view" class="img-natural">
+            <div class="gallery-caption">Fig 4.3: Exploded view: housing, gear trains, the three ring gears, shafts, and end plate.</div>
           </div>
         </div>
 
-        <!-- 2. Interactive 3D CAD Model Viewer with Part Toggles -->
+        <!-- 1. The Problem -->
+        <article class="case-section">
+          <!-- EDIT: Problem Section -->
+          <h2 class="case-section-title">The Problem</h2>
+          <p class="case-paragraph">
+            In Magic, everyone at the table needs to see your life total. A normal counter shows it to you, but from across the table your opponent reads it upside down and backwards. Showing the number twice sounds easy, but the other side of the table flips two things:
+          </p>
+          <ul class="case-list">
+            <li class="case-list-item">
+              <span class="case-list-bullet">01</span>
+              <div>
+                <strong>Digit order:</strong> Your ones digit sits where your opponent's tens digit belongs.
+              </div>
+            </li>
+            <li class="case-list-item">
+              <span class="case-list-bullet">02</span>
+              <div>
+                <strong>Digit orientation:</strong> Any digit printed to face you reads upside down to them.
+              </div>
+            </li>
+          </ul>
+        </article>
+
+        <!-- 2. The Mechanism -->
+        <article class="case-section">
+          <!-- EDIT: Mechanism Section -->
+          <h2 class="case-section-title">The Mechanism</h2>
+          <p class="case-paragraph">
+            Three internal ring gears carry the digits. From your side, left to right: your opponent's ones, a wide shared tens ring, and your ones.
+          </p>
+
+          <figure class="arch-figure">
+            <div class="arch-panel">
+              <svg viewBox="0 0 640 300" class="arch-svg" role="img" aria-label="Top-down view of the counter. The opponent's window, on the far side, frames their ones ring and their half of the shared tens ring and shows 39 rotated to face them. Your window, on the near side, frames your half of the shared tens ring and your ones ring and shows 39 facing you.">
+                <text x="320" y="24" class="arch-label-strong" text-anchor="middle">Opponent sits here: reads 39</text>
+                <rect x="58" y="128" width="22" height="44" rx="4" class="ring-knob"/>
+                <rect x="560" y="128" width="22" height="44" rx="4" class="ring-knob"/>
+                <rect x="80" y="48" width="480" height="204" rx="14" class="ring-body"/>
+                <rect x="120" y="48" width="100" height="204" class="ring-opponent"/>
+                <rect x="220" y="48" width="200" height="204" class="ring-tens"/>
+                <line x1="320" y1="48" x2="320" y2="252" class="ring-split"/>
+                <rect x="420" y="48" width="100" height="204" class="ring-ones"/>
+                <rect x="128" y="60" width="184" height="76" rx="8" class="ring-window-fill"/>
+                <rect x="128" y="60" width="184" height="76" rx="8" class="ring-window"/>
+                <g transform="rotate(180 220 98)">
+                  <text x="170" y="116" class="ring-digit" text-anchor="middle">3</text>
+                  <text x="270" y="116" class="ring-digit" text-anchor="middle">9</text>
+                </g>
+                <rect x="328" y="164" width="184" height="76" rx="8" class="ring-window-fill"/>
+                <rect x="328" y="164" width="184" height="76" rx="8" class="ring-window"/>
+                <text x="370" y="220" class="ring-digit" text-anchor="middle">3</text>
+                <text x="470" y="220" class="ring-digit" text-anchor="middle">9</text>
+                <text x="170" y="156" class="arch-label" text-anchor="middle">Their ones</text>
+                <text x="320" y="156" class="arch-label" text-anchor="middle">Shared tens</text>
+                <text x="470" y="156" class="arch-label" text-anchor="middle">Your ones</text>
+                <text x="320" y="284" class="arch-label-strong" text-anchor="middle">You sit here: read 39</text>
+              </svg>
+            </div>
+            <figcaption class="gallery-caption">Fig 4.4: Top-down view. The wide shared tens ring carries two number sets side by side, one per player. Each window frames its player's half of that ring plus their own ones ring, so both sides read 39.</figcaption>
+          </figure>
+
+          <ul class="case-list">
+            <li class="case-list-item">
+              <span class="case-list-bullet">01</span>
+              <div>
+                <strong>One shared tens ring:</strong> A single wide ring carries both players' tens digits: two sets of numbers side by side, one rotated 180° so it reads right side up from across the table.
+              </div>
+            </li>
+            <li class="case-list-item">
+              <span class="case-list-bullet">02</span>
+              <div>
+                <strong>Two ones rings, two different parts:</strong> They turn together like one long gear and count in the same direction, but the opponent's digits are rotated 180° so they read right side up from across the table.
+              </div>
+            </li>
+            <li class="case-list-item">
+              <span class="case-list-bullet">03</span>
+              <div>
+                <strong>Two knobs, independent gear trains:</strong> The tens knob drives the middle ring, and the ones knob drives both outer rings. On each shaft, some gears are driven and the rest spin freely, including a print-in-place idler in the middle, so turning one knob never drags the other digit along.
+              </div>
+            </li>
+          </ul>
+        </article>
+
+        <!-- 3. Holding It Together -->
+        <article class="case-section">
+          <!-- EDIT: Holding It Together Section -->
+          <h2 class="case-section-title">Holding It Together</h2>
+          <ul class="case-list">
+            <li class="case-list-item">
+              <span class="case-list-bullet">01</span>
+              <div>
+                <strong>No central axle, by necessity:</strong> The drive gears mesh on the inside of each ring, so spokes to a central axle would collide with them as the ring turned. Driving from the outside would have made the whole counter much bigger. Instead, four gears on a common pitch circle hold each ring in place, letting it spin with nothing in the middle.
+              </div>
+            </li>
+            <li class="case-list-item">
+              <span class="case-list-bullet">02</span>
+              <div>
+                <strong>Herringbone gears set axial position:</strong> Each ring's drive gear is fixed at a precise point along its shaft, and because herringbone teeth can't slide past each other sideways, that locks the ring in place. The other three gears float, and the rings can't drift sideways and rub against each other.
+              </div>
+            </li>
+            <li class="case-list-item">
+              <span class="case-list-bullet">03</span>
+              <div>
+                <strong>The tradeoff is assembly:</strong> Every ring has to be clocked to the right tooth so both sides show the same number. Parts can't go on one at a time; everything gets aligned, then slides on together.
+              </div>
+            </li>
+          </ul>
+        </article>
+
+        <!-- 4. Interactive 3D CAD Model Viewer with Part Toggles -->
         <article class="case-section" style="padding: 24px;">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
-            <h2 class="case-section-title" style="margin-bottom: 0;">Interactive 3D CAD Inspection</h2>
-            <div style="display: flex; gap: 8px;">
+            <h2 class="case-section-title" style="margin-bottom: 0;">Explore the CAD</h2>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
               <button class="btn btn-secondary btn-sm" id="cad-reset-btn" onclick="document.getElementById('cad-viewer')._resetView()">Reset View</button>
               <button class="btn btn-secondary btn-sm" id="cad-rotate-btn" onclick="const r = document.getElementById('cad-viewer')._toggleAutoRotate(); this.textContent = r ? 'Stop Rotate' : 'Auto Rotate';">Auto Rotate</button>
+              <a href="https://cad.onshape.com/documents/435f828c042a8351e9b8f629/w/854b9f01a7aa090b297488fb/e/b452f72a6aacee7b2ac49d7b?renderMode=0&amp;uiState=6ace64134b0d3e4875083667" class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer"><span>Open in Onshape</span> ↗</a>
             </div>
           </div>
           <p class="case-paragraph" style="font-size: 0.95rem; margin-bottom: 12px;">
-            Rotate (Left-Click + Drag), Pan (Right-Click + Drag), and Zoom (Scroll) through the full CAD assembly. Click the toggle badges below to <strong>hide individual parts</strong> (such as the outer casing) and reveal the internal planetary gear mechanisms!
+            Drag to rotate, right-drag to pan, and scroll to zoom. The casing starts hidden so you can see the gear trains; use the chips below to show or hide parts. For the full parametric model, open it in Onshape.
           </p>
 
           <!-- 3D Canvas Container -->
@@ -118,55 +229,39 @@
           </div>
         </article>
 
-        <!-- 3. The Kinematic Challenge & Gearbox Solution -->
+        <!-- 5. Getting There -->
         <article class="case-section">
-          <!-- EDIT: Kinematic Challenge Section -->
-          <h2 class="case-section-title">The Kinematic Challenge & Gearbox Architecture</h2>
-          <p class="case-paragraph">
-            The mechanical goal was to engineer a pocket-sized dual-player life counter (tracking 00 to 99 for both players) with crisp mechanical detents, zero gear slip, and a satisfying tactile click.
-          </p>
-          <p class="case-paragraph">
-            Standard spur gear arrangements in small form factors frequently suffer from tooth binding or excessive backlash. To overcome this, I developed a compound planetary reduction train:
-          </p>
+          <!-- EDIT: Iterations Section -->
+          <h2 class="case-section-title">Getting There</h2>
           <ul class="case-list">
             <li class="case-list-item">
               <span class="case-list-bullet">01</span>
               <div>
-                <strong>Custom Involute Tooth Geometry:</strong> Modified the standard 20° pressure angle to 25° on the 0.5 module pinions, increasing tooth root strength and preventing tip interference under micro-scale 3D printing tolerances.
+                <strong>The digit swap:</strong> My first prototype ordered the rings ones, tens, ones, tens. From across the table, that turned 67 into 76.
               </div>
             </li>
             <li class="case-list-item">
               <span class="case-list-bullet">02</span>
               <div>
-                <strong>Backlash Mitigation:</strong> Engineered integrated spring-loaded compliance directly into the idler carrier to maintain continuous tooth pitch contact without introducing binding friction.
+                <strong>The reused ring:</strong> I tried to be clever and reuse one ring part for both ones digits, flipping only the herringbone direction of the drive gear in CAD. I'd put a lot of work in before realizing that made every number read upside down to the person across the table, so the opponent's ring had to become its own part.
               </div>
             </li>
             <li class="case-list-item">
               <span class="case-list-bullet">03</span>
               <div>
-                <strong>Positive-Click Detent Wheel:</strong> Designed an internal scalloped cam ring with dual cantilever leaf springs, ensuring positive dial locking at every discrete integer step.
+                <strong>Four rings became three:</strong> An earlier version had two middle tens rings that moved together. Merging them into one wide ring cut about a quarter of the parts and made assembly easier, with three rings to align instead of four.
               </div>
             </li>
           </ul>
-        </article>
-
-        <!-- 4. Manufacturing, Tolerances & Materials -->
-        <article class="case-section">
-          <!-- EDIT: Tolerances & Materials Section -->
-          <h2 class="case-section-title">Manufacturing, Tolerances & Assembly</h2>
-          <p class="case-paragraph">
-            Prototyped and validated across both stereolithography (SLA Tough 2000 / Rigid 4000) and precision FDM setups. Applied GD&T running fit tolerances (&plusmn;0.05mm) across axle shafts and snap-fit retention caps, eliminating the need for complex internal fasteners.
+          <p class="case-paragraph" style="margin-bottom: 0;">
+            Every part is SLS printed, with white digits inlaid and glued into each ring. I've built about 20, enough for my playgroup to keep 4 at every place we play. Easier assembly and a detent click per number are the next improvements if I ever build more.
           </p>
-          <div class="gallery-item lightbox-trigger" data-caption="Fabricated MTG Life Counters - Multiple Colorway Assemblies">
-            <img src="assets/img/mtg-lifecounters.webp" alt="Fabricated MTG Life Counters" style="max-height: 400px; object-fit: cover;">
-            <div class="gallery-caption">Fig 4.3: Physical assembled and tested prototypes in multiple resin and filament colorways.</div>
-          </div>
         </article>
 
         <!-- Bottom Navigation Switcher -->
-        <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 20px;">
-          <a href="unreleased-rd.html" class="btn btn-secondary">← Previous: Unreleased R&D</a>
-          <a href="can-transceiver.html" class="btn btn-primary">Next: CAN Transceiver →</a>
+        <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; align-items: center; padding-top: 20px;">
+          <a href="unreleased-rd.html" class="btn btn-secondary">← Previous: Next-Generation Printer</a>
+          <a href="onewheel.html" class="btn btn-primary">Next: DIY Onewheel →</a>
         </div>
 
       </div>
@@ -193,7 +288,10 @@
   <script>
     // Initialize 3D CAD Viewer on page load
     window.addEventListener('load', () => {
-      window.initCadViewer('cad-viewer', 'assets/models/mtg-counter.glb');
+      window.initCadViewer('cad-viewer', 'assets/models/mtg-counter.glb', {
+        rotation: [-90, 0, 180],
+        hiddenGroups: ['Housing Case', 'Housing Cap']
+      });
     });
   </script>
 </body>

@@ -129,7 +129,28 @@ function initLightbox() {
 /* ==========================================================================
    3D CAD Viewer (Three.js with Part Show/Hide Toggles)
    ========================================================================== */
-window.initCadViewer = function(containerId, modelUrl) {
+// options.rotation: [x, y, z] in degrees, applied to the model before centering (e.g. to make CAD Z-up read as Y-up)
+// options.hiddenGroups: part group names hidden on load (their toggle buttons start in the hidden state)
+// options.groupRules: [[regex, groupName], ...] mapping CAD part names to toggle groups (first match wins)
+// options.quickToggle: {label, groups} for the highlighted "show/hide" button (e.g. a casing or deck)
+const MTG_GROUP_RULES = [
+  [/housingcap/i, 'Housing Cap'],
+  [/housing/i, 'Housing Case'],
+  [/your_ring/i, 'Player Ring'],
+  [/opponent_ring/i, 'Opponent Ring'],
+  [/central_ring/i, 'Central Ring'],
+  [/knob/i, 'Control Knobs'],
+  [/tens_shaft|ones_shaft|axlegear|drive/i, 'Shafts & Internal Gears'],
+  [/idler/i, 'Idler Pinions'],
+  [/screw|m2/i, 'Fasteners (M2)'],
+];
+
+window.initCadViewer = function(containerId, modelUrl, options = {}) {
+  const modelRotation = options.rotation || [0, 0, 0];
+  const hiddenGroups = options.hiddenGroups || [];
+  const groupRules = options.groupRules || MTG_GROUP_RULES;
+  const quickToggle = options.quickToggle === null ? null : (options.quickToggle || { label: 'Toggle Casing', groups: ['Housing Case', 'Housing Cap'] });
+  const cameraStart = options.cameraPosition || [110, 80, 130];
   const container = document.getElementById(containerId);
   if (!container) return;
 
@@ -159,7 +180,7 @@ window.initCadViewer = function(containerId, modelUrl) {
     0.1,
     1000
   );
-  camera.position.set(110, 80, 130);
+  camera.position.set(...cameraStart);
 
   // Renderer
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance" });
@@ -207,7 +228,9 @@ window.initCadViewer = function(containerId, modelUrl) {
     modelUrl,
     (gltf) => {
       modelRoot = gltf.scene;
-      
+      modelRoot.rotation.set(...modelRotation.map(THREE.MathUtils.degToRad));
+      modelRoot.updateMatrixWorld(true);
+
       // Center and scale
       const box = new THREE.Box3().setFromObject(modelRoot);
       const center = box.getCenter(new THREE.Vector3());
@@ -231,22 +254,14 @@ window.initCadViewer = function(containerId, modelUrl) {
           }
 
           const rawName = child.name || 'Component';
-          let groupKey = 'Other';
-
-          if (/housingcap/i.test(rawName)) groupKey = 'Housing Cap';
-          else if (/housing/i.test(rawName)) groupKey = 'Housing Case';
-          else if (/your_ring/i.test(rawName)) groupKey = 'Player Ring';
-          else if (/opponent_ring/i.test(rawName)) groupKey = 'Opponent Ring';
-          else if (/central_ring/i.test(rawName)) groupKey = 'Central Ring';
-          else if (/knob/i.test(rawName)) groupKey = 'Control Knobs';
-          else if (/tens_shaft|ones_shaft|axlegear|drive/i.test(rawName)) groupKey = 'Shafts & Internal Gears';
-          else if (/idler/i.test(rawName)) groupKey = 'Idler Pinions';
-          else if (/screw|m2/i.test(rawName)) groupKey = 'Fasteners (M2)';
+          const rule = groupRules.find(([pattern]) => pattern.test(rawName));
+          const groupKey = rule ? rule[1] : 'Other';
 
           if (!partGroups[groupKey]) {
             partGroups[groupKey] = [];
           }
           partGroups[groupKey].push(child);
+          if (hiddenGroups.includes(groupKey)) child.visible = false;
         }
       });
 
@@ -258,30 +273,36 @@ window.initCadViewer = function(containerId, modelUrl) {
       if (partsContainer) {
         partsContainer.innerHTML = '';
 
-        // Add Quick Action: Hide/Show Outer Housing
-        const housingToggleBtn = document.createElement('button');
-        housingToggleBtn.className = 'cad-part-btn active';
-        housingToggleBtn.textContent = '👁 Toggle Casing';
-        housingToggleBtn.style.borderColor = 'var(--accent-orange)';
-        housingToggleBtn.addEventListener('click', () => {
-          const housingParts = [...(partGroups['Housing Case'] || []), ...(partGroups['Housing Cap'] || [])];
-          const isVisible = housingParts.some(p => p.visible);
-          housingParts.forEach(p => { p.visible = !isVisible; });
-          housingToggleBtn.classList.toggle('active', !isVisible);
-          housingToggleBtn.classList.toggle('hidden-part', isVisible);
+        if (quickToggle) {
+          // Add Quick Action: Hide/Show Outer Housing
+          const housingToggleBtn = document.createElement('button');
+          housingToggleBtn.className = 'cad-part-btn active';
+          housingToggleBtn.textContent = '👁 ' + quickToggle.label;
+          housingToggleBtn.style.borderColor = 'var(--accent-orange)';
+          housingToggleBtn.addEventListener('click', () => {
+            const housingParts = quickToggle.groups.flatMap(g => partGroups[g] || []);
+            const isVisible = housingParts.some(p => p.visible);
+            housingParts.forEach(p => { p.visible = !isVisible; });
+            housingToggleBtn.classList.toggle('active', !isVisible);
+            housingToggleBtn.classList.toggle('hidden-part', isVisible);
           
-          // Also sync individual buttons
-          document.querySelectorAll('[data-group="Housing Case"], [data-group="Housing Cap"]').forEach(b => {
-            b.classList.toggle('active', !isVisible);
-            b.classList.toggle('hidden-part', isVisible);
+            // Also sync individual buttons
+            quickToggle.groups.map(g => partsContainer.querySelector(`[data-group="${g}"]`)).filter(Boolean).forEach(b => {
+              b.classList.toggle('active', !isVisible);
+              b.classList.toggle('hidden-part', isVisible);
+            });
           });
-        });
-        partsContainer.appendChild(housingToggleBtn);
+          if (quickToggle.groups.every(g => hiddenGroups.includes(g))) {
+            housingToggleBtn.classList.remove('active');
+            housingToggleBtn.classList.add('hidden-part');
+          }
+          partsContainer.appendChild(housingToggleBtn);
+        }
 
         // Individual Group Buttons
         Object.keys(partGroups).forEach((groupName) => {
           const btn = document.createElement('button');
-          btn.className = 'cad-part-btn active';
+          btn.className = hiddenGroups.includes(groupName) ? 'cad-part-btn hidden-part' : 'cad-part-btn active';
           btn.setAttribute('data-group', groupName);
           btn.textContent = groupName;
 
@@ -330,7 +351,7 @@ window.initCadViewer = function(containerId, modelUrl) {
 
   // Expose helper functions on container
   container._resetView = function() {
-    camera.position.set(110, 80, 130);
+    camera.position.set(...cameraStart);
     controls.target.set(0, 0, 0);
     controls.update();
   };

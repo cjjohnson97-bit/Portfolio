@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DIY Onewheel | Christopher Johnson Portfolio</title>
+  <meta name="description" content="A homemade self-balancing Onewheel built in 2019: chain drive, a discrete chain tensioner, a VESC controller, and what a fried controller on the first ride taught me.">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-grid">
+
+  <!-- SITE HEADER -->
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand-logo">
+        <span>Christopher Johnson</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="index.html#robotics-builds" class="nav-link active">← Back to Robotics &amp; Builds</a></li>
+          <li><a href="mtg-counter.html" class="nav-link">← MTG Life Counter</a></li>
+          <li><a href="can-transceiver.html" class="nav-link">CAN Bus Fault Isolator →</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="index.html#contact" class="btn btn-secondary btn-sm">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- CASE STUDY HERO -->
+    <section class="case-study-hero">
+      <div class="container">
+        <a href="index.html#robotics-builds" class="breadcrumb">← Back to Robotics &amp; Builds</a>
+        <!-- EDIT: Project Title & Subtitle -->
+        <h1 class="case-study-title">DIY Onewheel</h1>
+        <p class="case-study-subtitle">
+          Right out of school, I figured a self-balancing board was just a gyroscope, a speed controller, a PID loop, and some motors. My job at the time had a Haas CNC mill, and I wanted a project that put it to work, so I built one. It rode, barely, and it taught me a lot.
+        </p>
+
+        <!-- Technical Metadata Grid -->
+        <div class="specs-grid">
+          <div>
+            <div class="spec-item-label">Year</div>
+            <div class="spec-item-value">2019</div>
+          </div>
+          <div>
+            <div class="spec-item-label">Drive</div>
+            <div class="spec-item-value">Chain drive, two CIM motors from FRC</div>
+          </div>
+          <div>
+            <div class="spec-item-label">Control</div>
+            <div class="spec-item-value">VESC with built-in IMU</div>
+          </div>
+          <div>
+            <div class="spec-item-label">Fabrication</div>
+            <div class="spec-item-value">CNC-machined aluminum, laser-cut plywood</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CASE STUDY CONTENT -->
+    <div class="container">
+      <div class="case-content-grid">
+
+        <!-- Hero Media: build photo + riding clip -->
+        <div class="hero-media-grid hero-media-natural">
+          <div class="gallery-item lightbox-trigger" data-caption="The DIY Onewheel, top and bottom">
+            <img src="assets/img/onewheel.webp" alt="DIY Onewheel: plywood deck and aluminum rails on top, motors, chain drive, and battery underneath" class="hero-media-photo">
+            <div class="gallery-caption">Fig 5.1: The board from the top, and the drivetrain underneath.</div>
+          </div>
+          <div class="gallery-item" style="cursor: default;">
+            <video src="assets/videos/onewheel-ride.mp4" autoplay loop muted playsinline controls class="hero-media-video"></video>
+            <div class="gallery-caption">Fig 5.2: Riding it, more or less like a bull.</div>
+          </div>
+        </div>
+
+        <!-- 1. The Build -->
+        <article class="case-section">
+          <!-- EDIT: Build Section -->
+          <h2 class="case-section-title">The Build</h2>
+          <ul class="case-list">
+            <li class="case-list-item">
+              <span class="case-list-bullet">01</span>
+              <div>
+                <strong>Frame and fabrication:</strong> The side rails started as aluminum extrusion from McMaster, which I machined on the Haas. The cross members are 1/8" by 3" aluminum strip, cut to length and drilled on the mill, tied together with aluminum angle. The deck is laser-cut plywood, and the axle is McMaster hex shaft, turned down at the ends to fit the bearings.
+              </div>
+            </li>
+            <li class="case-list-item">
+              <span class="case-list-bullet">02</span>
+              <div>
+                <strong>Drivetrain:</strong> Two CIM motors, 12 V brushed motors from FIRST Robotics that I could get for free, drive the wheel through chain. I went for the biggest reduction I could fit, about 13.3:1: a 9-tooth pinion, the smallest that fits the motor shaft, driving a 120-tooth sprocket almost as big as the tire. I laser cut the sprocket from ABS in layers and glued them together for stiffness.
+              </div>
+            </li>
+            <li class="case-list-item">
+              <span class="case-list-bullet">03</span>
+              <div>
+                <strong>A discrete chain tensioner:</strong> Backlash in the chain makes a balancing board twitchy, so the motors mount on three standoffs with several hole patterns, each slightly offset. Picking a different set of holes moves the motor and changes the center distance to the axle, which works like a digital adjustment: discrete steps fine enough to set nearly any chain tension I needed.
+              </div>
+            </li>
+            <li class="case-list-item">
+              <span class="case-list-bullet">04</span>
+              <div>
+                <strong>Control and power:</strong> A VESC motor controller with a built-in IMU runs the balance loop, powered by an off-the-shelf 6S4P battery running at 12 V. All the electronics fit inside the 3-inch frame height.
+              </div>
+            </li>
+          </ul>
+        </article>
+
+        <!-- 2. Interactive 3D CAD -->
+        <article class="case-section" style="padding: 24px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
+            <h2 class="case-section-title" style="margin-bottom: 0;">Explore the CAD</h2>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+              <button class="btn btn-secondary btn-sm" onclick="document.getElementById('cad-viewer')._resetView()">Reset View</button>
+              <button class="btn btn-secondary btn-sm" onclick="const r = document.getElementById('cad-viewer')._toggleAutoRotate(); this.textContent = r ? 'Stop Rotate' : 'Auto Rotate';">Auto Rotate</button>
+              <a href="https://cad.onshape.com/documents/131a3180e21ffb34afa7011d/w/9d5acba5dfb7a63c3f136de3/e/f65bf8b0d791cb3e52e76458" class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer"><span>Open in Onshape</span> ↗</a>
+            </div>
+          </div>
+          <p class="case-paragraph" style="font-size: 0.95rem; margin-bottom: 12px;">
+            Drag to rotate, right-drag to pan, and scroll to zoom. Use the chips below to show or hide parts; hide the deck to see the drivetrain. For the full parametric model, open it in Onshape.
+          </p>
+
+          <div class="cad-viewer-wrapper">
+            <div class="cad-hint">🖱 Drag to rotate &bull; Scroll to zoom &bull; Click chips to toggle parts</div>
+            <div id="cad-loading" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: var(--font-mono); font-size: 0.9rem; color: var(--text-secondary); z-index: 5;">
+              Loading 3D CAD Model...
+            </div>
+            <div id="cad-viewer" class="cad-canvas-container"></div>
+            <div class="cad-controls-overlay">
+              <div class="cad-parts-toggles" id="cad-parts-list">
+                <!-- Part toggles injected dynamically by main.js -->
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 3. What Happened -->
+        <article class="case-section">
+          <!-- EDIT: What Happened Section -->
+          <h2 class="case-section-title">What Happened</h2>
+          <ul class="case-list">
+            <li class="case-list-item">
+              <span class="case-list-bullet">01</span>
+              <div>
+                <strong>A fried controller on the first ride:</strong> I made it about halfway around the building, turned it off, and it never turned back on. The likely cause: the VESC was built for brushless motors, and brushed motors need different current limits.
+              </div>
+            </li>
+            <li class="case-list-item">
+              <span class="case-list-bullet">02</span>
+              <div>
+                <strong>Rebuilt with a brushless motor:</strong> I switched to a single brushless motor, which gave me the torque to actually ride it without breaking the controller. It rode, but it was unstable and the foot sensor never worked reliably.
+              </div>
+            </li>
+            <li class="case-list-item">
+              <span class="case-list-bullet">03</span>
+              <div>
+                <strong>Where it ended:</strong> The mechanical side worked; what held it back was how immature the controllers and firmware were in 2019. Chasing that wasn't worth it for a board I just wanted to ride, so I bought a production one and took the lessons below with me.
+              </div>
+            </li>
+          </ul>
+        </article>
+
+        <!-- 4. What I'd Change -->
+        <article class="case-section">
+          <!-- EDIT: What I'd Change Section -->
+          <h2 class="case-section-title">What I'd Change</h2>
+          <p class="case-paragraph" style="margin-bottom: 0;">
+            As built, it was a fun toy for a lap around the block, not a daily rider. To make it one, I'd switch to a hub motor: more torque, higher voltage, and purpose-built for the loads a board like this sees. My controllers were barely rated for what I asked of them, and that headroom is what keeps you off the concrete.
+          </p>
+        </article>
+
+        <!-- Bottom Navigation Switcher -->
+        <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; align-items: center; padding-top: 20px;">
+          <a href="mtg-counter.html" class="btn btn-secondary">← Previous: MTG Life Counter</a>
+          <a href="can-transceiver.html" class="btn btn-primary">Next: CAN Bus Fault Isolator →</a>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- LIGHTBOX MODAL -->
+  <div id="lightbox-modal" class="lightbox-modal" role="dialog" aria-modal="true">
+    <div class="lightbox-content">
+      <button id="lightbox-close" class="lightbox-close" aria-label="Close dialog">&times;</button>
+      <img id="lightbox-img" class="lightbox-img" src="" alt="Enlarged gallery view">
+      <div id="lightbox-caption" class="lightbox-caption"></div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-bottom">
+      <div>&copy; 2026 Christopher Johnson</div>
+      <a href="index.html">Portfolio Home</a>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    // Initialize 3D CAD Viewer on page load
+    window.addEventListener('load', () => {
+      window.initCadViewer('cad-viewer', 'assets/models/onewheel.glb', {
+        rotation: [-90, 0, 0],
+        cameraPosition: [58, 42, 68],
+        quickToggle: null,
+        groupRules: [
+          [/deck/i, 'Deck'],
+          [/siderail|crossbeam|crossangle|sprocketbrace/i, 'Frame'],
+          [/sprocket/i, 'Sprockets'],
+          [/chain/i, 'Chain'],
+          [/cim/i, 'CIM Motors'],
+          [/mainaxel|bearing/i, 'Axle & Bearings'],
+          [/wheel/i, 'Wheel'],
+          [/^\d/, 'Hardware'],
+        ]
+      });
+    });
+  </script>
+</body>
+</html>
